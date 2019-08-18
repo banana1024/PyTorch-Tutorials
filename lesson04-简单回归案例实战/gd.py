@@ -1,5 +1,7 @@
 import numpy as np
-
+'''
+如果x的变化很小，并且变化值与导数值反号，则函数值下降。对于一元函数，x的变化只有两个方向，要么朝左，要么朝右。
+'''
 
 # y = wx + b
 def compute_error_for_line_given_points(b, w, points):
@@ -40,14 +42,14 @@ def run():
     points = np.genfromtxt("data.csv", delimiter=",")
     learning_rate = 0.0001
     initial_b = 0  # initial y-intercept guess
-    initial_m = 0  # initial slope guess
+    initial_w = 0  # initial slope guess
     num_iterations = 100
     print("Starting gradient descent at b = {0}, m = {1}, error = {2}"
-          .format(initial_b, initial_m,
-                  compute_error_for_line_given_points(initial_b, initial_m, points))
+          .format(initial_b, initial_w,
+                  compute_error_for_line_given_points(initial_b, initial_w, points))
           )
     print("Running...")
-    [b, m] = gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_iterations)
+    [b, m] = gradient_descent_runner(points, initial_b, initial_w, learning_rate, num_iterations)
     print("After {0} iterations b = {1}, m = {2}, error = {3}".
           format(num_iterations, b, m,
                  compute_error_for_line_given_points(b, m, points))
